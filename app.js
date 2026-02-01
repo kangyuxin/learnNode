@@ -1,18 +1,17 @@
 const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
-// Middleware to parse JSON bodies
 app.use(express.json());
-
-// Sample route
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(morgan("combined")); // Use the combined log format
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
 
 module.exports = app;
