@@ -3,11 +3,13 @@ const cors = require("cors");
 const morgan = require("morgan");
 const app = express();
 const PORT = 3000;
+const router = require("./router");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan("combined")); // Use the combined log format
+app.use("/api/v1", router);
 
 // Start the server
 app.listen(PORT, () => {
