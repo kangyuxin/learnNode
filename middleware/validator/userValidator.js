@@ -1,8 +1,8 @@
 const { body } = require("express-validator");
 
-const errorBack = require("./errorBack");
+const validate = require("./errorBack");
 
-module.exports.register = errorBack([
+module.exports.register = validate([
   body("username")
     .isLength({ min: 3, max: 20 })
     .withMessage("Username must be between 3 and 20 characters"),
