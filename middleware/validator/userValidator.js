@@ -18,3 +18,8 @@ module.exports.register = validate([
     .isMobilePhone()
     .withMessage("Please provide a valid phone number"),
 ]);
+
+module.exports.login = validate([
+  body("username").notEmpty().withMessage("Username is required"),
+  body("password").notEmpty().withMessage("Password is required"),
+]);
